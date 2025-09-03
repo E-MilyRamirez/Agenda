@@ -11,8 +11,21 @@ namespace Agenda
         {
             try
             {
-                string[] datos = File.ReadAllLines(@"Datos\Personas.csv");
-                MessageBox.Show(datos[1]);
+                //Lee solo las lineas del encabezado
+                //Es un arreglo de string
+                string[] renglones = File.ReadAllLines(@"Datos\Personas.csv");
+
+                bool esContacto = false;
+                foreach (string renglon in renglones)
+                {
+                    if (esContacto == false)
+                    {
+                        continue;
+                    }
+
+                    esContacto = true;
+                    MessageBox.Show(renglon);
+                }
             }
             catch (Exception ex)
             {
